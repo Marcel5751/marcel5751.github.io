@@ -31,3 +31,15 @@ version:             1.1.0
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics:
+
+data:
+  twitter:
+    # id: 'your-twitter-name'
+    href: 'https://www.twitter.com/marde5751'
+    title: 'Twitter'
+    fa-icon: 'fa-twitter-square'
+  github:
+    # id: 'your-github-name'
+    href: 'https://github.com/marcel5751'
+    title: 'GitHub'
+    fa-icon: 'fa-github-square'
