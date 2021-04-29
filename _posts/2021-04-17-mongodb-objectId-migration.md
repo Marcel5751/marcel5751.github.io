@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fun with MongoDB: Referencing of Documents with Spring Data Mongo
+title: "Fun with MongoDB: Referencing of Documents with Spring Data Mongo"
 ---
 
 Recently I had a problem with mongoDB and Spring Data Mongo, which was mostly my own fault. That is what happens when you go into a project without a real clue about the technology.
