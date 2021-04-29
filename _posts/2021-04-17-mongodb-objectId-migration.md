@@ -121,10 +121,11 @@ TypedAggregation<TestData> typedAggregation =
                 Aggregation.newAggregation(TestData.class, lookup1, lookup2);
         AggregationResults<TestDataDTO> aggregationResults = mongoTemplate.aggregate(typedAggregation, TestDataDTO.class);
         List<TestDataDTO> resultList = aggregationResults.getMappedResults();
-```
+{% endhighlight %}
 
 The TestDataDTO is just a POJO with the referenced Objects instead of the IDs:
-```
+
+{% highlight java %}
 public class TestDataDTO {
 
 @Id

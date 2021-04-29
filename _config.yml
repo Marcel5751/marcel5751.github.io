@@ -1,8 +1,7 @@
 # Setup
 title:               Marcels Blog
 tagline:             'An IT Blog'
-description:         'A Blog by a guy from Bremen/Germany. <br> <a href="https://github.com/Marcel5751/"><i class="svg-icon github"></i></a>
-<a href="https://twitter.com/marde5751"><i class="svg-icon twitter"></i></a>'
+description:         'A Blog by a guy from Bremen/Germany.'
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
