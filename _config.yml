@@ -3,7 +3,7 @@ title:               Marcels Blog
 tagline:             'An IT Blog'
 description:         'A reserved <a href="https://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
 # url:                 https://marcel5751.github.io
-baseurl:             'https://marcel5751.github.io/'
+baseurl:             'http://marcel5751.github.io/'
 paginate:            5
 permalink:           pretty
 
@@ -19,4 +19,4 @@ plugins:
 
 # Custom vars
 version:             1.1.0
-google_analytics_id: UA-146052-15
+# google_analytics_id: UA-146052-15
