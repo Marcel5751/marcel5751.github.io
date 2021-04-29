@@ -1,11 +1,11 @@
 ---
 layout: post
-title: fun with mongodb
+title: Fun with MongoDB: Referencing of Documents with Spring Data Mongo
 ---
 
-Recently I had a problem with mongoDB and Spring data mongoDb, which was mostly my own fault. That is what happens when you go into a project without a real clue about the technology.
+Recently I had a problem with mongoDB and Spring Data Mongo, which was mostly my own fault. That is what happens when you go into a project without a real clue about the technology.
 In Mongodb there are basically 2 ways to reference other documents, or to roughly translate it for people, who like myself, have a much bigger background in SQL: a Foreign key relationship.
-1. Manual referencing
+1. Manual Referencing
 2. DBRef
 
 After some consideration and reading [the docs](https://docs.mongodb.com/manual/reference/database-references/) and some stack overflow posts, I decided to go with the manual referencing.
@@ -58,10 +58,10 @@ For the "foreign keys" I could not use this annotation, as it is only for the "p
 
 Turns out, what I needed to do was add the annotation `@Field(targetType = FieldType.OBJECT_ID)` in order to tell spring data to map String on java level to an ObjectId in the mongoDB.
 
-```
+{% highlight java %}
 @Field(targetType = FieldType.OBJECT_ID)
 private String referencedObjectId;
-```
+{% endhighlight %}
 
 ## Migration
 Since the old version of the data model was already in use on a server, I could not just delete the old data and start from scratch, but I needed a migration script to convert the Strings in the existing data to ObjectIds.
@@ -69,7 +69,7 @@ Since the old version of the data model was already in use on a server, I could 
 
 I came up with the following script, which is inspired by this [SO post](https://stackoverflow.com/questions/37718005/change-document-value-from-string-to-objectid-using-update-query)
 
-```
+{% highlight js %}
 var requests = [];
 // let cursor = db.test_data.find({}, { "to": 1 });
 let cursor = db.test_data.find({})
@@ -102,11 +102,11 @@ cursor.forEach( document => {
 // Clean up queues
 if (requests.length > 0)
     db.test_data.bulkWrite(requests);
-```
+{% endhighlight %}
 
 ## Spring data mongoTemplate Query
 Now with that Problem out of the way, I only needed to translate the raw mongo query into an equivalent Spring data query.
-```
+{% highlight java %}
         LookupOperation lookup1 = Aggregation.lookup("test_data", // Join Table
                 "referencedObjectId",// Query table fields
                 "_id",// Join fields in tables
@@ -134,4 +134,4 @@ private ReferencedObject referencedObjectId;
 
 private AnotherReferencedObject anotherReferencedObjectId;
 }
-```
+{% endhighlight %}
