@@ -16,7 +16,7 @@ Instead of storing the references as an ObjectId, for some reason, I was storing
 
 Then I tried to add an endpoint, which fetches those nested documents and outputs the parent object and the child object in one JSON. This requires an aggregation pipeline with a lookup operation for each nested document (in SQL lingo: we want to join tables). 
 
-```
+{% highlight js %}
 db.test_data.aggregate([
     { $match: {_id: ObjectId("607439178a069ecb9f5c4d94")}},
     {
@@ -27,7 +27,8 @@ db.test_data.aggregate([
             as: "referencedObject"
         }
     }
-```
+{% endhighlight %}
+
 This is where the problems started.
 I was getting strange errors regarding the Bson size limit, which did not help a lot to understand what the problem was.
 ```
@@ -38,7 +39,7 @@ com.mongodb.MongoCommandException: Command failed with error 10334 (BSONObjectTo
 
 Since I am using the Spring boot data mongo wrapper, there is always some magic going on in the background, which can lead to misunderstandings. My original Model class looked something like this:
 
-```
+{% highlight java %}
 @Document(collection = "test_data")
 public class TestData {
 
@@ -49,7 +50,8 @@ private String referencedObjectId;
 
 private String anotherReferencedObjectId;
 }
-```
+{% endhighlight %}
+
 
 Using the `@Id` Annotation maps the String on java level to the _id field of [type ObjectId](https://docs.mongodb.com/manual/reference/method/ObjectId/) in the mongoDB.
 For the "foreign keys" I could not use this annotation, as it is only for the "primary key" of the collection.
