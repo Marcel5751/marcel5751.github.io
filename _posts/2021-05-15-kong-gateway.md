@@ -6,11 +6,12 @@ title: "Connecting Kong Gateway Admin API to Konga"
 Recently, I was experimenting with different API Gateways/ Management systems, when I ran into a little problem, which took longer than nessessary to figure out.
 
 ## Problem
-Konga is not able to connect to the Kong Admin API using Key Auth.
+The goal was to set up a Kong Gateway and Konga without a database but with some initial data and settings.
+The Problem was, that Konga was not able to connect to the Kong Admin API using Key Auth.
 
 ![Error shown in Konga Web UI](/public/cant_connect_konga.png)
 
-The Kong admin API connection details can be seeded to Konga like this.
+The Kong admin API connection details can be seeded to Konga by putting the following code into a file and referencing it with the `KONGA_SEED_KONG_NODE_DATA_SOURCE_FILE` environment variable in docker-compose (see below).
 
 {% highlight js %}
 // https://github.com/pantsel/konga/blob/master/docs/SEED_DEFAULT_DATA.md
@@ -32,7 +33,7 @@ Set the `kong_admin_url` to the Docker host, so `http://host.docker.internal:800
 
 With the docker-compose beeing:
 
-```
+{% highlight yml %}
 version: '3'
 
 services:
@@ -81,11 +82,11 @@ networks:
   kong-net:
     driver: bridge
 
-```
+{% endhighlight %}
 
 And the relevant parts of the kong.yml:
 
-```
+{% highlight yml %}
 _format_version: "2.1"
 
 services:
@@ -106,4 +107,4 @@ consumers:
 
 ...
 
-```
+{% endhighlight %}
