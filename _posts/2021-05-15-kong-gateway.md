@@ -1,13 +1,14 @@
 ---
 layout: post
-title: "Fun with MongoDB: Referencing of Documents with Spring Data Mongo"
+title: "Connecting Kong Gateway Admin API to Konga"
 ---
 
-Recently, I was experminenting with different API Gateways/ Management systems. 
+Recently, I was experimnenting with different API Gateways/ Management systems, when I ran into a little problem, which took longer than nessessary to figure out.
 
 ## Problem
-
 Konga is not able to connect to the Kong Admin API.
+
+![Error shown in Konga Web UI](/public/cant_connect_konga.png)
 
 The Kong admin API connection details can be seeded to Konga like this 
 {% highlight js %}
@@ -27,4 +28,4 @@ module.exports = [
 ## Solution
 
 Set the URL to the Docker host.
-Refresh Browser or o
+Clear Browser Cache or open in private Window.
