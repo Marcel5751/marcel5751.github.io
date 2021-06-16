@@ -1,6 +1,7 @@
 <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
      styles, `#sidebar-checkbox` for behavior. -->
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox"> -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" checked>
 
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
@@ -29,6 +30,27 @@
     <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>
     <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
   </nav>
+
+  <style>
+		.social-icon {display: inline-block; margin: 0 10px}
+  </style>
+
+  <div class="sidebar-item">
+    <p class="side-block">
+      <!-- <a href="{{ site.data.twitter.href }}" title="Email me">Click here to send me an email!</a> -->
+      <a class="social-icon" href="{{ site.data.github.href }}" >
+        <img src="https://raw.githubusercontent.com/neilorangepeel/Free-Social-Icons/882557bf4464af61e5cd0cad8f060fe9a126e5b6/Flat/SVG/Github.svg">
+      </img>
+      </a>
+      <a class="social-icon" href="{{ site.data.twitter.href }}" >
+        <img src="https://raw.githubusercontent.com/neilorangepeel/Free-Social-Icons/882557bf4464af61e5cd0cad8f060fe9a126e5b6/Flat/SVG/Twitter.svg">
+      </img>
+      </a>
+      <!-- <a href="{{ site.data.twitter.href }}" title="Facebook"><i class="fa fa-facebook-square"></i></a> -->
+      <!-- <a href="https://github.com/Marcel5751/"><i class="svg-icon github"></i></a>
+      <a href="https://twitter.com/marde5751"><i class="svg-icon twitter"></i></a> -->
+    </p>
+  </div>
 
   <div class="sidebar-item">
     <p>

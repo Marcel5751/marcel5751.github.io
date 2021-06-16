@@ -1,3 +1,11 @@
+=======
+# Marcel5751.github.io
+run locally: `jekyll serve` (works better on linux)
+
+How to work with branches:
+Write texts on master. When ready, push to gh-pages branch to deploy to marcel5751.github.io
+
+Source of Twitter/Github icons:
 https://github.com/neilorangepeel/Free-Social-Icons/find/master
 
 

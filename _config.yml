@@ -1,17 +1,26 @@
 # Setup
-title:               Lanyon
-tagline:             'A Jekyll theme'
-description:         'A reserved <a href="https://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-url:                 http://lanyon.getpoole.com
-baseurl:             ''
+title:               Marcels Blog
+tagline:             'An IT Blog'
+description:         'A Blog by a guy from Bremen/Germany.'
+
+# Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
+# Used for Sitemap.xml and your RSS feed
+url:                 'https://marcel5751.github.io'
+
+# If you're hosting your site at a Project repository on GitHub pages
+# (http://yourusername.github.io/repository-name)
+# and NOT your User repository (http://yourusername.github.io)
+# then add in the baseurl here, like this: "/repository-name"
+baseurl: ""
+
 paginate:            5
 permalink:           pretty
 
 # About/contact
 author:
-  name:              Mark Otto
-  url:               https://twitter.com/mdo
-  email:             markdotto@gmail.com
+  name:              Marcel
+  url:               https://twitter.com/marde5751
+  email:             ma_de@uni-bremen.de
 
 # Gems
 plugins:
@@ -19,4 +28,18 @@ plugins:
 
 # Custom vars
 version:             1.1.0
-google_analytics_id: #UA-XXXX-Y
+
+# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
+google_analytics:
+
+data:
+  twitter:
+    # id: 'your-twitter-name'
+    href: 'https://www.twitter.com/marde5751'
+    title: 'Twitter'
+    fa-icon: 'fa-twitter-square'
+  github:
+    # id: 'your-github-name'
+    href: 'https://github.com/marcel5751'
+    title: 'GitHub'
+    fa-icon: 'fa-github-square'
