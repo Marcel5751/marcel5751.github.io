@@ -47,3 +47,6 @@ memory=7GB
 ```
 and than run `Restart-Service LxssManager` in an admin powershell to load the changed config.
 
+[see](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
+
+
