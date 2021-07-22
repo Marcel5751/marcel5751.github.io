@@ -25,4 +25,6 @@ This is the list of locations where files related to Virtualbox are stored:
 Also delete all files starting with `VBox` in `C:\Windows\System32\drivers`.
 I am not 100% sure it is nessesary to remove the Guest Additions but I did so anyway.
 
+Some deletions also need to be made in the Registry, [as described here](https://dottech.org/101997/how-to-uninstall-virtualbox-drivers-on-windows/).
+
 ![Finally, the update continues](/public/2021-07-08-windows-update-vbox/vb_win_update.PNG)
