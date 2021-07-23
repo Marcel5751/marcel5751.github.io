@@ -5,6 +5,8 @@ title: "Not able to update windows because virtualbox is installed"
 
 Recently, I wanted to install a long overdue windows update on an old computer.
 running `winver`, we can see the currently installed version of windows.
+
+
 ![Version of Windows Before update](/public/2021-07-08-windows-update-vbox/winver_before.PNG)
 
 
