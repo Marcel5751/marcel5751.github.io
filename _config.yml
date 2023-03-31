@@ -42,5 +42,6 @@ data:
   github:
     # id: 'your-github-name'
     href: 'https://github.com/marcel5751'
+    repo: 'https://github.com/Marcel5751/marcel5751.github.io'
     title: 'GitHub'
     fa-icon: 'fa-github-square'
