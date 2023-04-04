@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Import KeyCloak Configuration via CI/CD"
+excerpt_separator: <!--more-->
 ---
 
 In a research project, we recently introduced the identity and access management system KeyCloak into our prototype. Since we want to deploy this setup to multiple servers (acceptance and production environments) we thought about how to transfer the KeyCloak Real Settings (Email SMTP configuration, clients, etc.) from one environment to the next. This has 3 main advantages:
@@ -8,6 +9,8 @@ In a research project, we recently introduced the identity and access management
  - avoid mistakes when recreating those settings
  - have the base Keycloak realm settings under version control
 
+ <!--more-->
+ 
 Note: The following information relates to KeyCloak version 21 Quakus distribution, ie. [this version](https://quay.io/repository/keycloak/keycloak?tab=tags&tag=21.0).
 On older/newer versions the behavior is (probably) different.
 
