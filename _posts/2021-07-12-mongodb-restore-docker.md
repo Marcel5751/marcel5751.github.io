@@ -1,12 +1,14 @@
 ---
 layout: post
 title: "Restore large MongoDB backup in Docker Desktop"
+tags: MongoDB
 ---
 
-Recently, I wanted to restore a MongoDB backup of a bigger production Database locally for testing. 
+Recently, I wanted to restore a MongoDB backup of a bigger production database locally for testing. 
 
 The container was created with a standard docker run command: `docker run -d -p 27017:27017 -v {PATH_TO_FOLDER}:/data-test -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin --name test-mongo mongo:4.4.3`.
 
+ <!--more-->
 
 ## Problem
 First, I tried to restore the backup from an archive with the following standard command:

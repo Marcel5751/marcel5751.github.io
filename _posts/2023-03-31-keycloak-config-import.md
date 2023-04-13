@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Import KeyCloak Configuration via CI/CD"
-excerpt_separator: <!--more-->
+tags: KeyCloak ci
 ---
 
 In a research project, we recently introduced the identity and access management system KeyCloak into our prototype. Since we want to deploy this setup to multiple servers (acceptance and production environments) we thought about how to transfer the KeyCloak Real Settings (Email SMTP configuration, clients, etc.) from one environment to the next. This has 3 main advantages:
@@ -10,14 +10,13 @@ In a research project, we recently introduced the identity and access management
  - have the base Keycloak realm settings under version control
 
  <!--more-->
- 
+
 Note: The following information relates to KeyCloak version 21 Quakus distribution, ie. [this version](https://quay.io/repository/keycloak/keycloak?tab=tags&tag=21.0).
 On older/newer versions the behavior is (probably) different.
 
 KeyCloak provides several options to export and import Realms. Since I found it quite confusing (partly due to the lackluster documentation) to understand the differences between the mechanisms, I want to share the insights that I gained through research and experimentation:
 
-The KeyCloak GUI has a Realm export option, but this export is incomplete, as it does not contain
-Therefore this was not an option.
+The KeyCloak GUI has a Realm export option, but this export is incomplete, as it does not contain e.g. the secrets of the realm. Therefore this was not an option.
 
 When running KeyCloak in a docker container, I can recommend the following export command:
 ```shell
@@ -46,7 +45,7 @@ Then I had a look at the admin CLI/ REST API (those are pretty much identical in
 Therefore, simply using the `kc.sh start --import-realm` option fitted our needs for the initial config setup quite nicely, as it will not override existing realms and it will also handle the environment substitution for us (see [docs](https://www.keycloak.org/server/importExport#_importing_a_realm_during_startup)).
 
 For example, we manually substituted the Callback URIs of a Keycloak client and the SMTP password, as those should be configurable for each environment. Excerpt from the `realm.json` file:
-```yaml
+{% highlight json %}
   ...
   {
     "clientId": "some-client",
@@ -63,7 +62,7 @@ For example, we manually substituted the Callback URIs of a Keycloak client and 
     "password": "${SMTP_PASSWORD}",
     ...
   }
-```
+{% endhighlight %}
 
 In theory, it is possible to deploy Keycloak without a custom Dockerfile but it recommended to optimize Keycloak performance by handling the build phase beforehand, as stated [in the docs](https://www.keycloak.org/server/configuration#_create_an_optimized_keycloak_build). It is required to explicitly run the Keycloak build stage in order to properly configure the configured Database vendor (KC_DB), in our case MariaDB, See [this discussion](https://groups.google.com/g/keycloak-user/c/wtCpDiFD70U).
 

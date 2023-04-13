@@ -1,13 +1,15 @@
 ---
 layout: post
 title: "Host Podcast Generator on Synology NAS"
+tags: Synology
 ---
 
 Recently, I wanted to put some audio files into an RSS feed that is served via the Synology NAS.
 After some research, I found the Podcast Generator Project [on Github](https://github.com/PodcastGenerator/PodcastGenerator) which makes it very easy to manage an RSS podcast feed.
 
-## Basic setup
+ <!--more-->
 
+## Basic setup
 
 On the Synology Nas, we can use the Webstation to host the podcast generator code with Nginx and PHP by placing the files in the `web` folder which is supposed to contain the files (HTML, PHP, CSS, etc.) needed for a static website.
 That means we need to extract the Podcast Generator files inside the zip to a new folder e.g. `/volume1/web/podcast-generator`. 

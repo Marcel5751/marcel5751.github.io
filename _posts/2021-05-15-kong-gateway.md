@@ -1,9 +1,12 @@
 ---
 layout: post
 title: "Connecting Kong Gateway Admin API to Konga"
+tags: Kong
 ---
 
 Recently, I was experimenting with different API Gateways/ Management systems, when I ran into a little problem, which took longer than nessessary to figure out.
+
+ <!--more-->
 
 ## Problem
 The goal was to set up a Kong Gateway and Konga without a database but with some initial data and settings.

@@ -558,3 +558,10 @@ a.pagination-item:hover {
 }
 
 @import "svg-icons";
+
+/* Marcel Additions */
+.post-tags {
+  display: block;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
