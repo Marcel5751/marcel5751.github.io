@@ -19,6 +19,7 @@ Lanyon is an unassuming [Jekyll](http://jekyllrb.com) theme that places content 
 
 ## Contents
 
+- [Marcel5751.github.io](#marcel5751githubio)
 - [Lanyon](#lanyon)
   - [Contents](#contents)
   - [Usage](#usage)

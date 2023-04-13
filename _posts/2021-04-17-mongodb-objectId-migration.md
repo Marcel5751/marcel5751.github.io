@@ -1,12 +1,15 @@
 ---
 layout: post
 title: "Fun with MongoDB: Referencing of Documents with Spring Data Mongo"
+tags: MongoDB
 ---
 
 Recently I had a problem with mongoDB and Spring Data Mongo, which was mostly my own fault. That is what happens when you go into a project without a real clue about the technology.
 In Mongodb there are basically 2 ways to reference other documents, or to roughly translate it for people, who like myself, have a much bigger background in SQL: a Foreign key relationship.
 1. Manual Referencing
 2. DBRef
+
+ <!--more-->
 
 After some consideration and reading [the docs](https://docs.mongodb.com/manual/reference/database-references/) and some stack overflow posts, I decided to go with the manual referencing.
 

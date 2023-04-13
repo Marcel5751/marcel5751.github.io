@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Import KeyCloak Configuration via CI/CD"
+tags: KeyCloak ci
 ---
 
 In a research project, we recently introduced the identity and access management system KeyCloak into our prototype. Since we want to deploy this setup to multiple servers (acceptance and production environments) we thought about how to transfer the KeyCloak Real Settings (Email SMTP configuration, clients, etc.) from one environment to the next. This has 3 main advantages:

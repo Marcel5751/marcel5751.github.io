@@ -5,8 +5,8 @@ description:         'A Blog by a guy from Bremen/Germany.'
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url:                 'https://marcel5751.github.io'
-#url:                 'http://localhost:4000' # use for local testing
+# url:                 'https://marcel5751.github.io'
+url:                 'http://localhost:4000' # use for local testing
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
@@ -16,6 +16,7 @@ baseurl: ""
 
 paginate:            5
 permalink:           pretty
+excerpt_separator: <!--more-->
 
 # About/contact
 author:
