@@ -1,50 +1,65 @@
 ---
 layout: post
 title: "Making Angular Internationalization work with Ionic Capacitor"
+tags: Ionic Angular Capacitor
 ---
 
+In a work project, we used the built-in [Angular Internationalization](https://angular.io/guide/i18n-overview#angular-internationalization) for our ionic app. When trying to build the native version of the app, we ran into the following issue:
+`The web directory (/path/to/project/www) must contain an "index.html".`. This is due to the fact that the index.html file is located in the respective language subfolder (e.g. www/en-US) after the angular localize feature did it’s job.
 
-We also encountered this issue in our organization. We preferred to use the [Angular Internationalization](https://angular.io/guide/i18n-overview#angular-internationalization) over using the NGX Translate package, but ran into the issue that `The web directory (/path/to/project/www) must contain an "index.html".`
+ <!--more-->
 
-With the following approach, we managed to build the app with both English and German languages packaged in the same APK.
+It is often suggested to use the [NGX Translate package](https://github.com/ngx-translate/core) instead, as it is able to switch dynamically between languages inside the app instead of building two separate versions of the app. We preferred to use the Angular i18n over the NGX Translate package since it’s the officially supported approach that is guaranteed to work with new angular versions. Especially because Ngx translate was abandoned for a long time and only recently got revived.
 
-The ionic `build:after` hook allows to execute custom javascript as part of the capacitor build process but after the angular build and therefore after the localization.
-We wrote a small js script, which creates a custom `index.html` file in the root of the `www` directory, which redirects to the correct language-specific version of the app within the corresponding folder (in our case either "de" or "en-GB").
+## This is our current solution/workaround
 
-Add the following to the `ionic.config.json`:
+
+We managed to build the native app with both English and German languages packaged in the same APK.
+
+The ionic build:after hook allows to execute custom javascript as part of the capacitor build process. The code is executed after the angular build and therefore after the localization.
+We wrote a small js script, that creates a custom `index.html` file in the root of the `www` directory, which redirects to the correct language-specific version of the app within the corresponding folder (in our case either "de" or "en-GB").
+
+We added the following to the ionic.config.json:
 
 {% highlight json %}
   "hooks": {
-    "build:after": "src/scripts/after-script.js"
+    "build:after": "src/scripts/after-angular-build-hook.js"
   }
 {% endhighlight %}
 
-The contents of the "after-script.js" look as follows (for "de" and "en-GB" locales):
+The contents of the "after-script.js" are as follows (for "de" and "en-GB" locales):
 
 {% highlight javascript %}
 // File needs to be CommonJs
+const fs = require("fs");
+
+const INDEX_HTML_PATH = "./www/index.html";
+const htmlContent =
+  '<script type="text/javascript">const currentLocale = navigator.language; if (currentLocale === "de") { window.location.href = "./de/index.html"; } else { window.location.href = "./en-GB/index.html"; } </script>';
+
 module.exports = function () {
   console.log("creating index.html...");
+  createIndexHtml();
+};
 
-  const fs = require("fs");
-  const indexHtmlPath = "./www/index.html"
-  const htmlContent =
-    '<script type="text/javascript">var currentLocale = navigator.language; if (currentLocale === "de") { window.location.href = "./de/index.html"; } else { window.location.href = "./en-GB/index.html"; } </script>';
-
-  fs.writeFile(indexHtmlPath, htmlContent, (error) => {
+function createIndexHtml() {
+  fs.writeFile(INDEX_HTML_PATH, htmlContent, (error) => {
     if (error) {
-      console.error('Error writing to file:', error);
+      throw new Error(`Error writing file: ${INDEX_HTML_PATH}`, { cause: error });
     } else {
-      console.log('Successfully wrote to file:', indexHtmlPath);
+      console.log("Successfully created file:", INDEX_HTML_PATH);
     }
   });
-};
+}
 {% endhighlight %}
 
-In order to ensure the Android app is served in the correct language, we needed to add some code to the `MainActivity` in the Android source folder of our ionic project.
+In order to ensure the Android app is showing the correct language based on the current system language, we needed to add some code to the `MainActivity` in the Android source folder of our ionic project.
 
 {% highlight java %}
 public class MainActivity extends BridgeActivity {
+  private static final String LOCALE_DE = "de";
+  private static final String LOCALE_EN_GB = "en-GB";
+
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setLocaleFromDeviceLanguage();
@@ -61,10 +76,10 @@ public class MainActivity extends BridgeActivity {
     }
 
     // Set the app's locale based on the detected language
-    if (deviceLocale.getLanguage().equals("de")) {
-      setLocale("de");
+    if (deviceLocale.getLanguage().equals(LOCALE_DE)) {
+      setLocale(LOCALE_DE);
     } else {
-      setLocale("en-GB");
+      setLocale(LOCALE_EN_GB);
     }
   }
 
@@ -80,5 +95,4 @@ public class MainActivity extends BridgeActivity {
 }
 {% endhighlight %}
 
-Build the app e.g. with the `ionic cap sync android` command and then run as a native app with `ionic cap run android`.
-When switching the system language of the Android phone, the app should now be loaded in that language.
+Build the app e.g. with the `ionic capacitor build android` command should now succeed. When running as a native app with `ionic capacitor run android` switching the system language of the Android phone should now lead to the app being loaded in that language.
