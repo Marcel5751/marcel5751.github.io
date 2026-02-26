@@ -7,3 +7,7 @@ services:
       - .:/site
     ports:
       - '4000:4000'
+    # hostname: jekyll
+# bundle exec jekyll serve --force_polling -H localhost -P 4000
+    # command:
+    #   [ "bundle", "exec", "jekyll", "serve", "--force_polling", "-H", "host.docker.internal", "-P", "4000" ]
