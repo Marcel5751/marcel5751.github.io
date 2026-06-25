@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Hugo on Marcels Blog</title>
+		<link>https://marcel5751.github.io/tags/hugo/</link>
+		<description>Recent content in Hugo on Marcels Blog</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://marcel5751.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Lets gooo!</title>
+				<link>https://marcel5751.github.io/2021/04/16/lets-gooo/</link>
+				<pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+				<guid>https://marcel5751.github.io/2021/04/16/lets-gooo/</guid>
+				<description>&lt;p&gt;Welcome to my blog lol&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
