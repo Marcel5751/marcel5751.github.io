@@ -1,4 +1,8 @@
 # https://github.com/actions/upload-pages-artifact
+# TODO: add trigger "on push"
+on:
+  push:
+    branches: [ gh-pages ]
 jobs:
   # Build job
   build:
